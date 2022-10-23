@@ -78,11 +78,7 @@ export class FormComponent implements OnInit {
     // })
 
     console.log('hola mundo')
-    this.userService.getPokemons().then(()=>{
-      setTimeout(() => {
-        this.userService.cargando$ = false;
-      }, 5000);
-    });
+    this.userService.getPokemons(6);
 
     }
 
