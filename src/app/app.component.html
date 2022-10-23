@@ -1,5 +1,4 @@
-
-<div class="contenedor">
+<app-spinner *ngIf="userService.cargando$"></app-spinner>
+<div  [className]="!userService.cargando$ ? '' : 'd-none'">
   <router-outlet></router-outlet>
 </div>
-  

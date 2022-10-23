@@ -3,8 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 //modulos
 import { AppRoutingModule } from './app-routing.module';
-import {MatStepperModule} from '@angular/material/stepper';
+import { ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+
+//Material
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 //componentes
 import { AppComponent } from './app.component';
@@ -14,7 +25,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { InicioComponent } from './components/dynamics/inicio/inicio.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './components/shared/spinner/spinner.component';
 
 
 
@@ -26,12 +37,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormComponent,
     DashboardComponent,
     InicioComponent,
-    RegisterComponent
+    RegisterComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,22 +1,70 @@
 <div class="box-form px-5">
-    <form class="formData ">
+    <form class="formData " [formGroup]="entrenadorForm" (ngSubmit)="submitForm()" >
         <legend>Tu informacion</legend>
         <p class="mb-4">Completa la siguiente informacion para compleatar tu perfil</p>
         <div class="mb-3">
-          <input type="text" class="form-control" id="nombre" autocomplete="off" placeholder="Nombre*">
+          <label for="nombre" class="form-label">
+            <span>Nombre*</span>
+          <input type="text" 
+          id="nombre"
+          formControlName="name" 
+          autocomplete="off" >
+          </label>
         </div>
+
         <div class="mb-3">
-          <input type="select" class="form-control" id="select" autocomplete="off" placeholder="Pasatiempo favorito" >
+          <mat-form-field class="example-chip-list d-grid" appearance="fill">
+            <mat-label>Pasatiempo favorito</mat-label>
+            <mat-chip-list #chipList aria-label="Hobby selection">
+              <mat-chip
+                *ngFor="let fruit of fruits"
+                (removed)="remove(fruit)">
+                {{fruit}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input
+                #hobbyInput
+                [formControl]="hobbyCtrl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let fruit of filteredHobbys | async" [value]="fruit">
+                {{fruit}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         </div>
-        <div class="mb-3 ">
-          <input type="date" class="form-control" id="date" placeholder="Cumpleaños*">
+
+        <div class="mb-3">
+          <label for="date" class="form-label">
+          <span>Cumpleaños*</span>
+          <input type="text" 
+          id="date"
+          #birthday
+          formControlName="birthday" 
+          autocomplete="off" (focus)="birthday.type = 'date'" (blur)="birthday.value.trim().length == 0 ? birthday.type='text' :''" >
+          </label>
         </div>
-        <div class="mb-5">
-          <input type="text" class="form-control" id="date" autocomplete="off" placeholder="Documento*" >
+
+        <div class="mb-3">
+          <label for="doc" class="form-label">
+          <span>Documento*</span>
+          <input type="text" 
+          id="doc"
+          formControlName="doc" 
+          autocomplete="off" >
+          </label>
         </div>
+
         <div class="d-grid gap-2 col-6 mx-auto">
-          <button type="button" class="btn btn-primary">Continuar</button>
+          <button type="submit" class="btn btn-primary">Continuar</button>
         </div>
       
       </form>
 </div>
+
