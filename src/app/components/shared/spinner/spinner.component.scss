@@ -1,0 +1,20 @@
+.box-loader {
+    width: auto;
+    height: 100%;
+    position: relative;
+}
+
+.box-img-loading{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.txtLoading{
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 52px;
+    color: #185A7D;
+}

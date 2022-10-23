@@ -14,7 +14,34 @@
                 <app-card></app-card>
             </div>
             <div class="col-md-6">
-                <app-form></app-form>
+                <!-- <app-form></app-form> -->
+                
+
+                    <div class="mb-5">
+                        <div class="box-search">
+                            <span class="icon"><i class="fa fa-search"></i></span>
+                            <input   id="search" type="search" placeholder="Buscar por indice, nombre..." aria-label="Search">
+                        </div>
+                    </div>
+                    
+                    <br>
+
+                    <div class="box-cards mt-4">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div class="col" *ngFor="let pokemon of pokemons">
+                              <div class="card  box-card">
+                                <div class="box-container-img">
+                                    <img [src]="pokemon.picture" class="card-img-top peq box-img"  width="120" height="120" alt="Imagen del pokemon">
+                                </div>
+                               
+                                <div class="card-body d-grid">
+                                  <a href="#" class="btn btn-primary btnInfo ">#000{{pokemon.id}}   {{pokemon.name}}</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                 
             </div>
         </div>
     </div>
