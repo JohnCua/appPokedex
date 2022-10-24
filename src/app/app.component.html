@@ -1,4 +1,4 @@
-<app-spinner *ngIf="userService.cargando$"></app-spinner>
-<div  [className]="!userService.cargando$ ? '' : 'd-none'">
+<app-spinner *ngIf="cargandoDatos"></app-spinner>
+<div  [className]="!cargandoDatos ? '' : 'd-none'">
   <router-outlet></router-outlet>
 </div>
