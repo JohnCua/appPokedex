@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonPaginatedResponse, Result, SimplePokemon } from 'src/app/interfaces/pokemon.interfaces';
-import { UserService } from 'src/app/services/user.service';
+import { SimplePokemon } from 'src/app/interfaces/pokemon.interfaces';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 
 @Component({
@@ -13,29 +13,42 @@ export class RegisterComponent implements OnInit {
 
   isLinear = false;
 
-  pokemons: SimplePokemon[] = []
+  pokemonsSelected: SimplePokemon [] = [];
+  selectedMini: boolean = false;
 
-  constructor(public userService:UserService) { }
+  constructor(public pokemonService:PokemonService) { }
 
   ngOnInit(): void {
-    this.userService.getPokemons(6).subscribe((resp:PokemonPaginatedResponse) => {
-  
-        this.pokemons = this.mapPokemonList(resp.results);
-        console.log(this.pokemons);
-    });
+  }
+
+  searchPokemon(search:any) {
+    if(search.trim().lenght == 0) {
+      return;
+    }
+    this.pokemonService.getSearchPokemon(search);
   }
 
 
-  mapPokemonList(pokemonList: Result[]) {
+  selectCardPokemon(poke:any) { 
 
-     return pokemonList.map(({name, url}) => {
-      
-      const urlParts = url.split('/');
-      const id = urlParts[urlParts.length - 2];
-      const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-      return { id, picture, name }
-    })
+    let index = this.pokemonsSelected.indexOf(poke);
+    
+    if( index > -1 ) {
+      this.pokemonsSelected.splice(index,1)
+    } else  {
+      this.pokemonsSelected.push(poke)
+    }
+
+    if(this.pokemonsSelected.length>2) {
+      this.selectedMini = true;
+    } else {
+      this.selectedMini = false;
+    }
+
   }
+
+
+ 
 
 
 }

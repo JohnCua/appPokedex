@@ -20,13 +20,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  getPokemons(limit=6) : Observable<any> {
-
-    return this.http.get(`${environment.api_urlPokemon}/pokemon?limit=${limit}`)
-    .pipe(
-      map( resp => resp))
-  }
-
+ 
   searchPokemon() {
 
   }

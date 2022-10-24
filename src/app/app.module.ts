@@ -26,6 +26,8 @@ import { InicioComponent } from './components/dynamics/inicio/inicio.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
+import { CardPerfilComponent } from './components/shared/card-perfil/card-perfil.component';
+import { CardPokemonComponent } from './components/shared/card-pokemon/card-pokemon.component';
 
 
 
@@ -39,6 +41,8 @@ import { SpinnerComponent } from './components/shared/spinner/spinner.component'
     InicioComponent,
     RegisterComponent,
     SpinnerComponent,
+    CardPerfilComponent,
+    CardPokemonComponent,
   ],
   imports: [
     BrowserModule,

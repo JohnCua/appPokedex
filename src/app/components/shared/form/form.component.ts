@@ -7,6 +7,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { PokemonService } from '../../../services/pokemon.service';
 
 @Component({
   selector: 'app-form',
@@ -35,7 +36,7 @@ export class FormComponent implements OnInit {
 
   @ViewChild('hobbyInput') hobbyInput!: ElementRef<HTMLInputElement>;
 
-  constructor(private _formBuilder: FormBuilder,  public userService:UserService) {
+  constructor(private _formBuilder: FormBuilder,  public pokemonService:PokemonService) {
   
     this.filteredHobbys = this.hobbyCtrl.valueChanges.pipe(
       startWith(null),
@@ -77,8 +78,8 @@ export class FormComponent implements OnInit {
     //   console.log('respuesta')
     // })
 
-    console.log('hola mundo')
-    this.userService.getPokemons(6);
+    //console.log('hola mundo')
+    //this.userService.getPokemons(6);
 
     }
 
