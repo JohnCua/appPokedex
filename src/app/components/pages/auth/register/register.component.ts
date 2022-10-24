@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SimplePokemon } from 'src/app/interfaces/pokemon.interfaces';
-import { PokemonService } from 'src/app/services/pokemon.service';
 
 
 @Component({
@@ -10,45 +8,27 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class RegisterComponent implements OnInit {
 
+  stepOne = true;
+  stepTwo = false;
+  stepTrhee = false;
+  banderaLlenaImg = false;
 
-  isLinear = false;
-
-  pokemonsSelected: SimplePokemon [] = [];
-  selectedMini: boolean = false;
-
-  constructor(public pokemonService:PokemonService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  searchPokemon(search:any) {
-    if(search.trim().lenght == 0) {
-      return;
-    }
-    this.pokemonService.getSearchPokemon(search);
-  }
-
-
-  selectCardPokemon(poke:any) { 
-
-    let index = this.pokemonsSelected.indexOf(poke);
     
-    if( index > -1 ) {
-      this.pokemonsSelected.splice(index,1)
-    } else  {
-      this.pokemonsSelected.push(poke)
-    }
+  }
+  
 
-    if(this.pokemonsSelected.length>2) {
-      this.selectedMini = true;
-    } else {
-      this.selectedMini = false;
-    }
-
+  stepOneNext(data:any) {
+    this.stepOne = false;
+    this.stepTwo = true;
+    
   }
 
-
- 
+  setBanderaImg(eve:any) {
+    this.banderaLlenaImg = true;
+  }
 
 
 }

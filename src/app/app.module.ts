@@ -28,6 +28,7 @@ import { RegisterComponent } from './components/pages/auth/register/register.com
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
 import { CardPerfilComponent } from './components/shared/card-perfil/card-perfil.component';
 import { CardPokemonComponent } from './components/shared/card-pokemon/card-pokemon.component';
+import { SearchPokemonComponent } from './components/dynamics/search-pokemon/search-pokemon.component';
 
 
 
@@ -43,6 +44,7 @@ import { CardPokemonComponent } from './components/shared/card-pokemon/card-poke
     SpinnerComponent,
     CardPerfilComponent,
     CardPokemonComponent,
+    SearchPokemonComponent,
   ],
   imports: [
     BrowserModule,

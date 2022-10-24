@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -16,6 +16,10 @@ export class PokemonService {
   pokemonsFiltrado$: SimplePokemon[] = [];
   filtrando$: boolean = false;
 
+  datauser$: any ;
+
+
+  @Output() changeInfoUser: EventEmitter<any> = new EventEmitter();
 
   constructor(private http: HttpClient) {
     this.getPokemons();
@@ -23,12 +27,13 @@ export class PokemonService {
 
 
   getPokemons(limit=6)  {
-
     return new Promise( (resolve, reject) => {
       this.http.get(`${environment.api_urlPokemon}/pokemon?limit=${limit}`).subscribe((resp:any) => {
         this.pokemons$ = this.mapPokemonList(resp?.results);
-        console.log(this.pokemons$)
-        this.cargando$ = false;
+        setTimeout(() => {
+          this.cargando$ = true;
+        }, 5000);
+       
         resolve(1);
       })
       
@@ -75,5 +80,16 @@ export class PokemonService {
 
     return poke;
   }
+
+
+  guardarInfoUser(dataUser:any) {
+    this.datauser$ = dataUser;
+    this.changeInfoUser.emit(dataUser);
+    setTimeout(() => {
+      this.cargando$ = true;
+    }, 5000);
+  }
+
+  
 
 }

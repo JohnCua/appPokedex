@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-card-perfil',
@@ -7,9 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardPerfilComponent implements OnInit {
 
-  constructor() { }
+  srcImagenPerfil: any = '/assets/img/user.png';
+
+  titleCard:string = 'Imagen perfil';
+
+  infoUser: any
+
+  edadUser = 0;
+
+  @Input() bandera:boolean = false; 
+
+  @Output() imgBanderallena: EventEmitter<any> = new EventEmitter();
+
+  
+  constructor(private pokemonService: PokemonService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.infoUser = this.pokemonService.changeInfoUser.subscribe((resp)=>{
+      this.infoUser = resp;
+    })
+   
+  }
+
+  previewImg(input:any) {
+    if (input?.files?.length === 0) {
+      return ;
+    } else {
+      var reader = new FileReader();
+      reader.readAsDataURL(input.files[0]);
+      reader.onload =  (e) => {
+          this.srcImagenPerfil = e.target?.result
+      };
+
+      this.imgBanderallena.emit(true);
+    }
   }
 
 }

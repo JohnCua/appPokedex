@@ -58,3 +58,14 @@ example-chip-list {
     padding: 0 5px;
   }
 
+
+  .btnStepOne {
+    background: #01426A;
+    border-radius: 10px;
+  }
+
+  .btnStepOne:disabled {
+    background: #E6E6E6;
+    color:#868686;
+    border: none;
+  }

@@ -1,4 +1,4 @@
-import { Component, OnInit,  ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit,  ElementRef, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormControl,Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 
@@ -8,6 +8,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { PokemonService } from '../../../services/pokemon.service';
+
 
 @Component({
   selector: 'app-form',
@@ -19,7 +20,7 @@ export class FormComponent implements OnInit {
 
   entrenadorForm = this._formBuilder.group({
     name:  ['', [Validators.required]],
-    hobby:  ['', [Validators.required]],
+    hobby:  [''],
     birthday:  ['', [Validators.required]],
     doc:  ['', Validators.required]
   });
@@ -27,14 +28,21 @@ export class FormComponent implements OnInit {
   submitted = false;
 
   //material 
-
   separatorKeysCodes: number[] = [ENTER, COMMA];
   hobbyCtrl = new FormControl('');
   filteredHobbys: Observable<string[]>;
-  fruits: string[] = [];
+  hobbysSelected: string[] = [];
   hobbys: string[] = ['Jugar Futbol', 'Jugar Basquetball', 'Jegar Tennis', 'Jugar Voleibol', 'Jugar Fifa', 'Jugar Videojuegos'];
 
+
+
   @ViewChild('hobbyInput') hobbyInput!: ElementRef<HTMLInputElement>;
+
+
+  @Output() stepOneNext: EventEmitter<any> = new EventEmitter();
+  @Input() banderaImgFull :boolean; 
+
+  banderaSpan = false;
 
   constructor(private _formBuilder: FormBuilder,  public pokemonService:PokemonService) {
   
@@ -74,21 +82,39 @@ export class FormComponent implements OnInit {
   submitForm() {
     this.submitted = true;
 
-    // this.contactFormService.postContactoForulario(this.contactoForm.value).subscribe((respuesta)=> {
-    //   console.log('respuesta')
-    // })
+    console.log(this.banderaImgFull);
 
-    //console.log('hola mundo')
-    //this.userService.getPokemons(6);
+    if(!this.entrenadorForm.valid ) {
+      return;
+    }
+
+    if(!this.banderaImgFull) {
+    
+      this.banderaSpan = true;
+      return;
+    }
+
+    this.banderaSpan = false;
+    
+    this.stepOneNext.emit('hola mundo');
+
+    this.entrenadorForm.get('hobby')?.setValue(this.hobbysSelected[0])
+
+    this.pokemonService.guardarInfoUser(this.entrenadorForm.value);
+
+    
+
 
     }
 
+
+    //funciones para material select
     add(event: MatChipInputEvent): void {
       const value = (event.value || '').trim();
   
-      // Add our fruit
+      // Add 
       if (value) {
-        this.fruits.push(value);
+        this.hobbysSelected.push(value);
       }
   
       // Clear the input value
@@ -98,15 +124,15 @@ export class FormComponent implements OnInit {
     }
   
     remove(fruit: string): void {
-      const index = this.fruits.indexOf(fruit);
+      const index = this.hobbysSelected.indexOf(fruit);
   
       if (index >= 0) {
-        this.fruits.splice(index, 1);
+        this.hobbysSelected.splice(index, 1);
       }
     }
    
     selected(event: MatAutocompleteSelectedEvent): void {
-      this.fruits.push(event.option.viewValue);
+      this.hobbysSelected.push(event.option.viewValue);
       this.hobbyInput.nativeElement.value = '';
       this.hobbyCtrl.setValue(null);
     }

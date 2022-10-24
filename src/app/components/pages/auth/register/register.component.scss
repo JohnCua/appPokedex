@@ -16,37 +16,3 @@
     margin-top: 16px;
   }
   
-
-
-  .box-search input#search{
-    width: 100%;
-    height: 50px;
-    border: none;
-    float: left;
-    padding-left: 45px;
-    background: #F2F2F2;
-    border-radius: 10px;
-    font-family: 'Gotham';
-    font-size: 16px;
-    line-height: 21px;
-  }
-
-  .box-search{
-  width: 100%;
-  position: relative;
-  }
-
-  .box-search .icon{
-    position: absolute;
-    top: 50%;
-    margin-left: 17px;
-    margin-top: 17px;
-    z-index: 1;
-    color: #4f5b66;
-  }
-
-
-.btnGuardar{
-  background: #01426A;
-border-radius: 10px;
-}
