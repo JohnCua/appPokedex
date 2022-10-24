@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="mb-5">
+        <div class="box-search">
+            <span class="icon"><i class="fa fa-search"></i></span>
+            <input  #searchInput 
+            id="search" 
+            type="text" 
+            (keyup.enter)="searchPokemon( searchInput.value )
+            "placeholder="Buscar por indice, nombre..." 
+            aria-label="Search">
+        </div>
+    </div>
+    
+    <br>
+    
+    <div class="mt-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" (click)="selectCardPokemon(pokemon)" *ngFor="let pokemon of (pokemonService.filtrando$) ? pokemonService.pokemonsFiltrado$ :  pokemonService.pokemons$">
+              <app-card-pokemon [pokemon]="pokemon"></app-card-pokemon>
+            </div>
+            <div *ngIf="(pokemonService.filtrando$ && pokemonService.pokemonsFiltrado$.length == 0)" class="w-100">
+                <span  class="d-grid">No se encontro ningun pokemon</span>
+            </div>
+    
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" [disabled]="!selectedMini" class="btn btn-primary btnGuardar">Guardar</button>
+            </div>
+            
+          </div>
+    </div>
+</div>
