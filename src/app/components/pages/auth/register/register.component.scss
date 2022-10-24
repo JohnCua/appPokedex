@@ -46,53 +46,7 @@
   }
 
 
-
- .box-card{
-  background: #F2F2F2;
-  border-radius: 20px;  
-  position: relative;
-  height: 106.35px;
-  width: 163.44px;
-  border: none;
- }
-
- .box-img{
-  position: absolute;
-  left: 31.07%;
-  right: 31.07%;
-  top: -25%;
-  bottom: 36.91%;
- }
-
- img.peq{
-  width: 76px;
-  height: 83px;
-  background-size: cover;
-  object-fit: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.box-container-img{
-  width: 76px;
-  height: 83px;
-}
-
-
-.btnInfo {
+.btnGuardar{
   background: #01426A;
-  border-radius: 10px;
-  border: none;
-  color: #FFFFFF;
-  // font-family: 'Poppins'; //agregando esta fuente se parece diferente al diseño
-  font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
-  line-height: 18px;
-
-  width: 135.74px;
-  box-sizing: border-box;
-
-  
- }
+border-radius: 10px;
+}

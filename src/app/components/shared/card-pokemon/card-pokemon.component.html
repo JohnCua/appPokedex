@@ -1,0 +1,9 @@
+<div class="card  box-card " (click)="selectCardPokemon(pokemon)" id="poke{{pokemon.id}}">
+    <div class="box-container-img">
+        <img [src]="pokemon.picture" class="card-img-top peq box-img"  width="120" height="120" alt="Imagen del pokemon">
+    </div>
+   
+    <div class="card-body d-grid">
+      <a  class="btn btn-primary btnInfo pointer">#000{{pokemon.id}}   {{pokemon.name}}</a>
+    </div>
+  </div>
