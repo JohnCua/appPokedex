@@ -5,15 +5,15 @@
         <div class="mb-3">
           <label for="nombre" class="form-label">
             <span>Nombre*</span>
-          <input type="text" 
+          <input type="text"
           id="nombre"
-          formControlName="name" 
+          formControlName="name"
           autocomplete="off" >
           </label>
         </div>
 
         <div class="mb-3">
-          <mat-form-field class="example-chip-list d-grid" appearance="fill">
+          <mat-form-field class="example-chip-list d-grid" appearance="outline">
             <mat-label>Pasatiempo favorito</mat-label>
             <mat-chip-list #chipList aria-label="Hobby selection">
               <mat-chip
@@ -43,10 +43,10 @@
         <div class="mb-3">
           <label for="date" class="form-label">
           <span>Cumpleaños*</span>
-          <input type="text" 
+          <input type="text"
           id="date"
           #birthday
-          formControlName="birthday" 
+          formControlName="birthday"
           autocomplete="off" (focus)="birthday.type = 'date'" (blur)="birthday.value.trim().length == 0 ? birthday.type='text' :''" >
           </label>
         </div>
@@ -54,9 +54,9 @@
         <div class="mb-3">
           <label for="doc" class="form-label">
           <span>Documento*</span>
-          <input type="text" 
+          <input type="text"
           id="doc"
-          formControlName="doc" 
+          formControlName="doc"
           autocomplete="off" >
           </label>
         </div>
@@ -64,7 +64,7 @@
         <div class="d-grid gap-2 col-6 mx-auto">
           <button type="submit" class="btn btn-primary btnStepOne" [disabled]="!entrenadorForm.valid">Continuar</button>
         </div>
-      
+
       </form>
 
       <span *ngIf="banderaSpan">Seleccione una imagen</span>

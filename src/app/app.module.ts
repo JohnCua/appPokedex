@@ -20,7 +20,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 //componentes
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/shared/form/form.component';
-import { CardComponent } from './components/shared/card/card.component';
+
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { InicioComponent } from './components/dynamics/inicio/inicio.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
@@ -36,7 +36,6 @@ import { SearchPokemonComponent } from './components/dynamics/search-pokemon/sea
   declarations: [
     AppComponent,
     NavbarComponent,
-    CardComponent,
     FormComponent,
     DashboardComponent,
     InicioComponent,

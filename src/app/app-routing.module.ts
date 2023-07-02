@@ -8,11 +8,11 @@ import { dashboardRoutes } from './components/pages/dashboard/dashboard.routes';
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   {
-      path: '',
+      path: 'home',
       component: DashboardComponent,
       children: dashboardRoutes
   },
-  { path: '**', redirectTo: 'resgister' }
+  { path: '**', redirectTo: 'register' }
 ];
 
 

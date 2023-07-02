@@ -18,7 +18,7 @@
 .box-img-s {
     width: 269px;
     height: 269px;
- 
+
     background: #E7EFF5;
     border: 14px solid #FFFFFF;
     box-sizing: border-box;
@@ -32,4 +32,49 @@
 
 .txtInfoUser {
     text-align: right;
+}
+
+
+
+
+.container-input {
+  text-align: center;
+  background: #FFFFFF;
+  padding: 5px 0;
+  border-radius: 6px;
+  width: 50%;
+  align-self: center;
+}
+
+.select_file{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+
+
+.select_file + label {
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+
+}
+
+
+.select_file + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  margin-right: 0.25em;
 }

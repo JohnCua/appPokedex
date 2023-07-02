@@ -69,3 +69,22 @@ example-chip-list {
     color:#868686;
     border: none;
   }
+
+
+  ::ng-deep mat-form-field .mat-form-field-wrapper{
+    padding-bottom: 0px !important;
+  }
+
+  ::ng-deep .mat-form-field:is(.mat-focused) .mat-form-field-label{
+    color: #01426A !important;
+  }
+
+
+  ::ng-deep .mat-form-field-label{
+    font-family:  Poppins !important;
+    font-size: large !important;
+    color: #ced4da !important;
+
+
+  }
+

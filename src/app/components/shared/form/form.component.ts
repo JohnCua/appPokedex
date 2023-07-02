@@ -27,7 +27,7 @@ export class FormComponent implements OnInit {
 
   submitted = false;
 
-  //material 
+  //material
   separatorKeysCodes: number[] = [ENTER, COMMA];
   hobbyCtrl = new FormControl('');
   filteredHobbys: Observable<string[]>;
@@ -40,12 +40,12 @@ export class FormComponent implements OnInit {
 
 
   @Output() stepOneNext: EventEmitter<any> = new EventEmitter();
-  @Input() banderaImgFull :boolean; 
+  @Input() banderaImgFull :boolean;
 
   banderaSpan = false;
 
   constructor(private _formBuilder: FormBuilder,  public pokemonService:PokemonService) {
-  
+
     this.filteredHobbys = this.hobbyCtrl.valueChanges.pipe(
       startWith(null),
       map((fruit: string | null) => (fruit ? this._filter(fruit) : this.hobbys.slice())),
@@ -62,7 +62,7 @@ export class FormComponent implements OnInit {
           input?.previousElementSibling?.classList.add('focus');
           input?.parentElement?.classList.add('focus');
         }
-  
+
         input.onblur = () =>{
 
           input.value = input.value.trim();
@@ -82,6 +82,9 @@ export class FormComponent implements OnInit {
   submitForm() {
     this.submitted = true;
 
+    console.log('form entrenador ', this.entrenadorForm.valid);
+    console.log('img ', this.banderaImgFull);
+
     console.log(this.banderaImgFull);
 
     if(!this.entrenadorForm.valid ) {
@@ -89,20 +92,20 @@ export class FormComponent implements OnInit {
     }
 
     if(!this.banderaImgFull) {
-    
+
       this.banderaSpan = true;
       return;
     }
 
     this.banderaSpan = false;
-    
+
     this.stepOneNext.emit('hola mundo');
 
     this.entrenadorForm.get('hobby')?.setValue(this.hobbysSelected[0])
 
     this.pokemonService.guardarInfoUser(this.entrenadorForm.value);
 
-    
+
 
 
     }
@@ -111,36 +114,36 @@ export class FormComponent implements OnInit {
     //funciones para material select
     add(event: MatChipInputEvent): void {
       const value = (event.value || '').trim();
-  
-      // Add 
+
+      // Add
       if (value) {
         this.hobbysSelected.push(value);
       }
-  
+
       // Clear the input value
       event.chipInput!.clear();
-  
+
       this.hobbyCtrl.setValue(null);
     }
-  
+
     remove(fruit: string): void {
       const index = this.hobbysSelected.indexOf(fruit);
-  
+
       if (index >= 0) {
         this.hobbysSelected.splice(index, 1);
       }
     }
-   
+
     selected(event: MatAutocompleteSelectedEvent): void {
       this.hobbysSelected.push(event.option.viewValue);
       this.hobbyInput.nativeElement.value = '';
       this.hobbyCtrl.setValue(null);
     }
-  
+
 
     private _filter(value: string): string[] {
       const filterValue = value.toLowerCase();
-  
+
       return this.hobbys.filter(fruit => fruit.toLowerCase().includes(filterValue));
     }
 
